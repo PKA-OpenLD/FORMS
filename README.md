@@ -11,6 +11,29 @@
 
 ---
 
+## Mục lục
+
+- [Giới thiệu](#giới-thiệu)
+- [Kiến trúc hệ thống](#kiến-trúc-hệ-thống)
+- [Yêu cầu hệ thống](#yêu-cầu-hệ-thống-prerequisites)
+- [Hướng dẫn Cài đặt](#hướng-dẫn-cài-đặt-build-from-source)
+- [Chạy ứng dụng](#chạy-ứng-dụng-run)
+- [Tài liệu chi tiết](#tài-liệu-chi-tiết)
+- [Tính năng chính](#tính-năng-chính-features)
+- [Testing & Development](#testing--development)
+- [Deployment](#deployment)
+- [Cấu hình môi trường](#cấu-hình-môi-trường-environment-variables)
+- [Đóng góp](#đóng-góp-contributing)
+- [Giấy phép](#giấy-phép-license)
+- [🏆 Dự thi OLP 2025](#-dự-thi-olp-2025)
+- [Đội ngũ phát triển](#đội-ngũ-phát-triển-team)
+- [Liên kết hữu ích](#liên-kết-hữu-ích-useful-links)
+- [FAQ (Câu hỏi thường gặp)](#-faq-câu-hỏi-thường-gặp)
+- [Screenshots & Demo](#-screenshots--demo)
+- [Project Status & CI/CD](#project-status--cicd)
+
+---
+
 ## Giới thiệu
 
 Đây là kho mã nguồn tổng hợp (Aggregator Repository) cho giải pháp **Quản lý rủi ro đô thị**, bao gồm cảnh báo ngập lụt, mất điện và giám sát mật độ giao thông theo thời gian thực. Hệ thống tích hợp các công nghệ tiên tiến:
@@ -445,32 +468,6 @@ Dự án này được phát triển cho cuộc thi **Phần mềm Nguồn mở 
 - 📧 Email: [contact@pka-openld.org](mailto:contact@pka-openld.org)
 - 🌐 GitHub: [github.com/PMMNM-Dep](https://github.com/PMMNM-Dep)
 - 📝 Issues: [GitHub Issues](https://github.com/PMMNM-Dep/PMMNM-Dep/issues)
-
----
-
-## Thống kê dự án (Project Stats)
-
-### Lines of Code:
-
-- **Web App**: ~15,000 lines (TypeScript/React)
-- **AI Model**: ~2,000 lines (Python)
-- **Bridge**: ~500 lines (Go)
-- **Total**: ~17,500 lines
-
-### Components:
-
-- **React Components**: 20+
-- **API Endpoints**: 30+
-- **Database Collections**: 8
-- **AI Models**: 2 (YOLOv8s, YOLOv11n)
-
-### Technologies:
-
-- **Languages**: TypeScript, Python, Go
-- **Frameworks**: Next.js 16, React 19
-- **Databases**: MongoDB 7.0
-- **Protocols**: HTTP/REST, WebSocket, MQTT
-- **AI/ML**: YOLO v8/11, OpenCV
 
 ---
 
