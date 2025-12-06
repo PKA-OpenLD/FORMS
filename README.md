@@ -1,4 +1,4 @@
-# 🌊 HỆ THỐNG QUẢN LÝ RỦI RO NGẬP LỤT & GIÁM SÁT GIAO THÔNG
+# HỆ THỐNG QUẢN LÝ RỦI RO NGẬP LỤT & GIÁM SÁT GIAO THÔNG
 
 ### (Flood and Outage Risk Management System)
 
@@ -11,7 +11,7 @@
 
 ---
 
-## 📖 Giới thiệu
+## Giới thiệu
 
 Đây là kho mã nguồn tổng hợp (Aggregator Repository) cho giải pháp **Quản lý rủi ro đô thị**, bao gồm cảnh báo ngập lụt, mất điện và giám sát mật độ giao thông theo thời gian thực. Hệ thống tích hợp các công nghệ tiên tiến:
 
@@ -19,7 +19,7 @@
 - **Real-time Visualization:** Bản đồ số tương tác (VietMap GL JS).
 - **Open Data:** Sử dụng dữ liệu mở theo chuẩn NGSI-LD và Datasets cộng đồng.
 
-## 🏗️ Kiến trúc hệ thống
+## Kiến trúc hệ thống
 
 Dự án được tổ chức theo mô hình Microservices, quản lý qua **Git Submodules**:
 
@@ -31,7 +31,7 @@ Dự án được tổ chức theo mô hình Microservices, quản lý qua **Git
 
 ---
 
-## ⚙️ Yêu cầu hệ thống (Prerequisites)
+## Yêu cầu hệ thống (Prerequisites)
 
 Để cài đặt và biên dịch mã nguồn, máy tính cần cài đặt sẵn:
 
@@ -42,7 +42,7 @@ Dự án được tổ chức theo mô hình Microservices, quản lý qua **Git
 
 ---
 
-## 🛠️ Hướng dẫn Cài đặt (Build from Source)
+## Hướng dẫn Cài đặt (Build from Source)
 
 ### Bước 1: Clone mã nguồn (Quan trọng)
 
@@ -113,7 +113,7 @@ cp monitor_config.example.yaml monitor_config.yaml
 
 ---
 
-## 🚀 Chạy ứng dụng (Run)
+## Chạy ứng dụng (Run)
 
 ### Khởi động MongoDB (Required)
 
@@ -178,7 +178,7 @@ python train.py
 
 ---
 
-## 📚 Tài liệu chi tiết
+## Tài liệu chi tiết
 
 Mỗi module có tài liệu phân tích hệ thống riêng:
 
@@ -188,45 +188,45 @@ Mỗi module có tài liệu phân tích hệ thống riêng:
 
 ---
 
-## 🎯 Tính năng chính (Features)
+## Tính năng chính (Features)
 
-### 🗺️ Bản đồ thời gian thực
+### Bản đồ thời gian thực
 
 - Hiển thị khu vực ngập lụt và tắc đường trên VietMap
 - Cập nhật tức thì qua WebSocket
 - Responsive trên mọi thiết bị
 
-### 📊 Giám sát cảm biến IoT
+### Giám sát cảm biến IoT
 
 - Tích hợp cảm biến mực nước, nhiệt độ, độ ẩm
 - MQTT protocol cho communication
 - Tự động cảnh báo khi vượt ngưỡng
 
-### 🤖 AI Computer Vision
+### AI Computer Vision
 
 - Phát hiện và đếm 8 loại phương tiện (YOLO)
 - Giám sát mật độ giao thông real-time
 - Cảnh báo tự động khi tắc đường
 
-### ⚙️ Rule Engine - Tự động hóa
+### Rule Engine - Tự động hóa
 
 - Tạo zones cảnh báo tự động khi cảm biến kích hoạt
 - Logic phức tạp với AND/OR operators
 - Visual workflow editor (drag-and-drop)
 
-### 👥 Crowdsourcing
+### Crowdsourcing
 
 - Người dùng báo cáo tình trạng ngập/tắc đường
 - Phân loại mức độ nghiêm trọng
 - Tracking và cập nhật status
 
-### 🌤️ Dự báo thời tiết
+### Dự báo thời tiết
 
 - Tích hợp API thời tiết
 - Dự đoán rủi ro ngập lụt
 - Hiển thị cảnh báo sớm
 
-### 📱 Admin Panel
+### Admin Panel
 
 - Quản lý zones, sensors, rules
 - Dashboard analytics
@@ -234,7 +234,7 @@ Mỗi module có tài liệu phân tích hệ thống riêng:
 
 ---
 
-## 🧪 Testing & Development
+## Testing & Development
 
 ### Unit Testing
 
@@ -272,7 +272,7 @@ go vet ./...
 
 ---
 
-## 📦 Deployment
+## Deployment
 
 ### Docker Compose (Khuyến nghị)
 
@@ -297,7 +297,7 @@ Xem chi tiết tại:
 
 ---
 
-## 🔧 Cấu hình môi trường (Environment Variables)
+## Cấu hình môi trường (Environment Variables)
 
 ### Web Application (.env.local)
 
@@ -353,7 +353,7 @@ locations:
 
 ---
 
-## 🤝 Đóng góp (Contributing)
+## Đóng góp (Contributing)
 
 Chúng tôi hoan nghênh mọi đóng góp từ cộng đồng!
 
@@ -378,7 +378,7 @@ Nếu phát hiện bug hoặc có ý tưởng feature mới, vui lòng tạo [Gi
 
 ---
 
-## 📄 Giấy phép (License)
+## Giấy phép (License)
 
 Dự án này được phân phối dưới **Apache License 2.0**. Xem file [LICENSE](./LICENSE) để biết thêm chi tiết.
 
@@ -433,7 +433,7 @@ Dự án này được phát triển cho cuộc thi **Phần mềm Nguồn mở 
 
 ---
 
-## 👥 Đội ngũ phát triển (Team)
+## Đội ngũ phát triển (Team)
 
 - **Organization**: PKA-OpenLD
 - **Maintainer**: PKA-OpenLD Team
@@ -448,7 +448,7 @@ Dự án này được phát triển cho cuộc thi **Phần mềm Nguồn mở 
 
 ---
 
-## 📊 Thống kê dự án (Project Stats)
+## Thống kê dự án (Project Stats)
 
 ### Lines of Code:
 
@@ -474,7 +474,7 @@ Dự án này được phát triển cho cuộc thi **Phần mềm Nguồn mở 
 
 ---
 
-## 🔗 Liên kết hữu ích (Useful Links)
+## Liên kết hữu ích (Useful Links)
 
 ### Documentation:
 
@@ -533,44 +533,6 @@ Chưa, nhưng web app đã responsive và hoạt động tốt trên mobile.
 
 ---
 
-## 🚧 Lộ trình phát triển (Roadmap)
-
-### ✅ Phase 1: Foundation (Hoàn thành)
-
-- Real-time map visualization
-- Zone management
-- Sensor integration
-- User reports
-- Rule engine
-- AI traffic monitoring
-
-### 🔄 Phase 2: Security & Stability (Đang thực hiện)
-
-- Authentication & Authorization
-- Input validation
-- Error handling
-- Rate limiting
-- Data encryption
-
-### 📅 Phase 3: Advanced Features (Q2 2025)
-
-- Machine Learning predictions
-- Historical analytics
-- Mobile app (React Native)
-- Notification system (Email/SMS/Push)
-- Multi-language support
-- Dark mode
-
-### 🎯 Phase 4: Enterprise (Q3 2025)
-
-- Multi-tenancy
-- Advanced reporting
-- GraphQL API
-- Microservices optimization
-- Kubernetes deployment
-- High Availability setup
-
----
 
 ## 📸 Screenshots & Demo
 
@@ -598,7 +560,7 @@ Chưa, nhưng web app đã responsive và hoạt động tốt trên mobile.
 
 ---
 
-## 🙏 Cảm ơn (Acknowledgments)
+## Cảm ơn (Acknowledgments)
 
 - **OLP 2025** - Cảm ơn ban tổ chức đã tạo cơ hội
 - **VietMap** - Cung cấp bản đồ số Việt Nam
@@ -608,7 +570,7 @@ Chưa, nhưng web app đã responsive và hoạt động tốt trên mobile.
 
 ---
 
-## ⚖️ Disclaimer (Tuyên bố miễn trừ trách nhiệm)
+## Disclaimer (Tuyên bố miễn trừ trách nhiệm)
 
 Dự án này được phát triển cho mục đích học tập và dự thi. Không được đảm bảo cho sử dụng production mà không có testing và validation đầy đủ.
 
@@ -621,7 +583,7 @@ Dự án này được phát triển cho mục đích học tập và dự thi. 
 
 ---
 
-## 📈 Project Status & CI/CD
+## Project Status & CI/CD
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Coverage](https://img.shields.io/badge/coverage-75%25-yellow)
@@ -643,6 +605,5 @@ Made with ❤️ by [PKA-OpenLD](https://github.com/PMMNM-Dep) for OLP 2025
 
 ---
 
-_Cập nhật lần cuối: 2025-12-05_
 
 </div>
