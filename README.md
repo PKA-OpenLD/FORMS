@@ -11,46 +11,132 @@
 
 ---
 
+## Demo
+
+### Video Demo
+
+🎥 [Watch Demo Video](https://youtube.com/demo) (Coming soon)
+
+---
+
 ## Mục lục
 
-- [Giới thiệu](#giới-thiệu)
 - [Kiến trúc hệ thống](#kiến-trúc-hệ-thống)
 - [Yêu cầu hệ thống](#yêu-cầu-hệ-thống-prerequisites)
 - [Hướng dẫn Cài đặt](#hướng-dẫn-cài-đặt-build-from-source)
 - [Chạy ứng dụng](#chạy-ứng-dụng-run)
-- [Tài liệu chi tiết](#tài-liệu-chi-tiết)
 - [Tính năng chính](#tính-năng-chính-features)
 - [Testing & Development](#testing--development)
 - [Deployment](#deployment)
-- [Cấu hình môi trường](#cấu-hình-môi-trường-environment-variables)
+- [Cấu hình môi trường](#cấu-hình-môi-trường)
 - [Đóng góp](#đóng-góp-contributing)
 - [Giấy phép](#giấy-phép-license)
-- [🏆 Dự thi OLP 2025](#-dự-thi-olp-2025)
+- [Dự thi OLP 2025](#-dự-thi-olp-2025)
 - [Đội ngũ phát triển](#đội-ngũ-phát-triển-team)
 - [Liên kết hữu ích](#liên-kết-hữu-ích-useful-links)
 - [FAQ (Câu hỏi thường gặp)](#-faq-câu-hỏi-thường-gặp)
-- [Screenshots & Demo](#-screenshots--demo)
-- [Project Status & CI/CD](#project-status--cicd)
 
 ---
 
-## Giới thiệu
+## Tính năng chính (Features)
 
-Đây là kho mã nguồn tổng hợp (Aggregator Repository) cho giải pháp **Quản lý rủi ro đô thị**, bao gồm cảnh báo ngập lụt, mất điện và giám sát mật độ giao thông theo thời gian thực. Hệ thống tích hợp các công nghệ tiên tiến:
+### Bản đồ thời gian thực
 
-- **AI/Computer Vision:** Phát hiện phương tiện và ngập lụt (YOLO).
-- **Real-time Visualization:** Bản đồ số tương tác (VietMap GL JS).
-- **Open Data:** Sử dụng dữ liệu mở theo chuẩn NGSI-LD và Datasets cộng đồng.
+- Hiển thị khu vực ngập lụt và tắc đường trên VietMap
+- Cập nhật tức thì qua WebSocket
+- Responsive trên mọi thiết bị
 
+### Giám sát cảm biến IoT
+
+- Tích hợp cảm biến mực nước, nhiệt độ, độ ẩm
+- MQTT protocol cho communication
+- Tự động cảnh báo khi vượt ngưỡng
+
+### AI Computer Vision
+
+- Phát hiện và đếm 8 loại phương tiện (YOLO)
+- Giám sát mật độ giao thông real-time
+- Cảnh báo tự động khi tắc đường
+
+### Rule Engine - Tự động hóa
+
+- Tạo zones cảnh báo tự động khi cảm biến kích hoạt
+- Logic phức tạp với AND/OR operators
+- Visual workflow editor (drag-and-drop)
+
+### Crowdsourcing
+
+- Người dùng báo cáo tình trạng ngập/tắc đường
+- Phân loại mức độ nghiêm trọng
+- Tracking và cập nhật status
+
+### Dự báo thời tiết
+
+- Tích hợp API thời tiết
+- Dự đoán rủi ro ngập lụt
+- Hiển thị cảnh báo sớm
+
+### Admin Panel
+
+- Quản lý zones, sensors, rules
+- Dashboard analytics
+- User reports management
+
+---
 ## Kiến trúc hệ thống
 
-Dự án được tổ chức theo mô hình Microservices, quản lý qua **Git Submodules**:
+### Tổng quan kiến trúc
 
-| Module       | Thư mục               | Công nghệ chính                    | Mô tả                                                |
-| :----------- | :-------------------- | :--------------------------------- | :--------------------------------------------------- |
-| **Web App**  | [`/app`](./app)       | Next.js 16, Bun, React 19, VietMap | Giao diện người dùng, Dashboard quản lý, Bản đồ số.  |
-| **AI Model** | [`/models`](./models) | Python, YOLOv8/11, OpenCV          | Mô hình nhận diện phương tiện và cảnh báo ngập lụt.  |
-| **Bridge**   | [`/bridge`](./bridge) | Bun, WebSocket                     | Middleware kết nối dữ liệu giữa AI Model và Web App. |
+Dự án được tổ chức theo mô hình **Microservices** với ba thành phần chính:
+
+```
+┌───────────────────────────────────────────────────────────────────┐
+│                        CLIENT LAYER                               │
+│  ┌──────────────────────────────────────────────────────────┐     │
+│  │          Web Dashboard (React 19 + VietMap GL JS)        │     │
+│  │    - Interactive Maps | Admin Panel | Workflow Editor    │     │
+│  │    - User Reports | Real-time Alerts                     │     │
+│  └──────────────────┬───────────────────────────────────────┘     │
+└─────────────────────┼─────────────────────────────────────────────┘
+                      │ HTTP/WebSocket
+┌─────────────────────┼───────────────────────────────────────────┐
+│                     ▼                                           │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │        MIDDLEWARE LAYER (Bun WebSocket Server)           │   │
+│  │  - Real-time Event Broadcasting                          │   │
+│  │  - API Request Proxying                                  │   │
+│  └──────────┬────────────────────────┬──────────────────────┘   │
+│             │ HTTP                   │ HTTP                     │
+└─────────────┼────────────────────────┼───────────────────────┬──┘
+              │                        │                       │
+              ▼                        ▼                       ▼
+    ┌──────────────────┐    ┌──────────────────┐   ┌────────────────────┐
+    │   BACKEND (API)  │    │   DATABASE       │   │   BRIDGE/MQTT      │
+    │  ┌────────────┐  │    │  ┌────────────┐  │   │  ┌──────────────┐  │
+    │  │ Next.js API│  │    │  │  MongoDB   │  │   │  │ Go Bridge    │  │
+    │  │ Routes     │  │    │  │  - Sensors │  │   │  │ - MQTT Sub   │  │
+    │  │            │  │    │  │  - Rules   │  │   │  │ - API Client │  │
+    │  │ • Sensors  │  │    │  │  - Zones   │  │   │  │ - Topic Map  │  │
+    │  │ • Rules    │  │    │  │  - Predict │  │   │  └──────┬───────┘  │
+    │  │ • Zones    │  │    │  └────────────┘  │   │         │          │
+    │  │ • Predict  │  │    │                  │   │         │ MQTT     │
+    │  │ • Reports  │  │    │                  │   │         ▼          │
+    │  │            │  │    │                  │   │    ┌───────────┐   │
+    │  │ Rule Engine│  │    │                  │   │    │MQTT Broker│   │
+    │  │ (TS)       │  │    │                  │   │    │(ESP32/IoT)│   │
+    │  └────────────┘  │    │                  │   │    └───────────┘   │
+    │                  │    │                  │   │                    │
+    └──────────────────┘    └──────────────────┘   └────────────────────┘
+```
+
+### Thành phần chính
+
+| Module       | Thư mục               | Công nghệ chính                    | Mô tả                                                     |
+| :----------- | :-------------------- | :--------------------------------- | :-------------------------------------------------------- |
+| **Web App**  | [`/app`](./app)       | Next.js 16, Bun, React 19, VietMap | Giao diện người dùng, Dashboard quản lý, Bản đồ số tương tác. |
+| **AI Model** | [`/models`](./models) | Python, YOLOv8/11, OpenCV          | Mô hình nhận diện phương tiện và cảnh báo ngập lụt.        |
+| **Bridge**   | [`/bridge`](./bridge) | Go, MQTT Client, API Client        | Middleware MQTT kết nối sensor IoT và Web App.             |
+
 
 ---
 
@@ -73,12 +159,17 @@ Do dự án sử dụng Git Submodules, bạn **BẮT BUỘC** phải clone vớ
 
 ```bash
 # Clone toàn bộ dự án
-git clone --recursive [https://github.com/PMMNM-Dep/PMMNM-Dep.git](https://github.com/PMMNM-Dep/PMMNM-Dep.git)
+git clone --recursive [https://github.com/PKA-OpenLD/FORMS.git](https://github.com/PKA-OpenLD/FORMS)
+```
 
-⚠️ Lưu ý: Nếu bạn đã lỡ clone bằng lệnh thường (thư mục con bị rỗng), hãy chạy lệnh sau để sửa lỗi: git submodule update --init --recursive
+⚠️ Lưu ý: Nếu bạn đã lỡ clone bằng lệnh thường (thư mục con bị rỗng), hãy chạy lệnh sau để sửa lỗi:
+```bash
+git submodule update --init --recursive
+```
 
+``` bash 
 # Di chuyển vào thư mục dự án
-cd PMMNM-Dep
+cd FORMS
 ```
 
 ### Bước 2: Cài đặt Web Application (Next.js)
@@ -90,13 +181,17 @@ cd app
 # Cài đặt dependencies với Bun
 bun install
 
-# Tạo file cấu hình môi trường
-cp .env.local.example .env.local
+```
 
-# Chỉnh sửa .env.local với thông tin MongoDB
-# MONGODB_URI=mongodb://localhost:27017/flood-management
-# VIETMAP_API_KEY=your_vietmap_api_key
-# NEXT_PUBLIC_WS_URL=ws://localhost:8080
+#### Cài đặt .env.local theo .env.local.example
+
+```bash
+# linux
+cp .env.local.example .env.local
+```
+```bash
+# window
+copy .env.local.example .env.local
 ```
 
 ### Bước 3: Cài đặt MQTT Bridge (Go)
@@ -198,101 +293,6 @@ python traffic_monitor.py --config monitor_config.yaml
 # Hoặc training model mới
 python train.py
 ```
-
----
-
-## Tài liệu chi tiết
-
-Mỗi module có tài liệu phân tích hệ thống riêng:
-
-- **[Web App Documentation](./app/PHAN_TICH_HE_THONG.md)** - Kiến trúc Next.js, API, Components
-- **[MQTT Bridge Documentation](./bridge/PHAN_TICH_HE_THONG.md)** - Go service, MQTT-to-HTTP gateway
-- **[AI Model Documentation](./models/PHAN_TICH_HE_THONG.md)** - YOLO training, traffic monitoring
-
----
-
-## Tính năng chính (Features)
-
-### Bản đồ thời gian thực
-
-- Hiển thị khu vực ngập lụt và tắc đường trên VietMap
-- Cập nhật tức thì qua WebSocket
-- Responsive trên mọi thiết bị
-
-### Giám sát cảm biến IoT
-
-- Tích hợp cảm biến mực nước, nhiệt độ, độ ẩm
-- MQTT protocol cho communication
-- Tự động cảnh báo khi vượt ngưỡng
-
-### AI Computer Vision
-
-- Phát hiện và đếm 8 loại phương tiện (YOLO)
-- Giám sát mật độ giao thông real-time
-- Cảnh báo tự động khi tắc đường
-
-### Rule Engine - Tự động hóa
-
-- Tạo zones cảnh báo tự động khi cảm biến kích hoạt
-- Logic phức tạp với AND/OR operators
-- Visual workflow editor (drag-and-drop)
-
-### Crowdsourcing
-
-- Người dùng báo cáo tình trạng ngập/tắc đường
-- Phân loại mức độ nghiêm trọng
-- Tracking và cập nhật status
-
-### Dự báo thời tiết
-
-- Tích hợp API thời tiết
-- Dự đoán rủi ro ngập lụt
-- Hiển thị cảnh báo sớm
-
-### Admin Panel
-
-- Quản lý zones, sensors, rules
-- Dashboard analytics
-- User reports management
-
----
-
-## Testing & Development
-
-### Unit Testing
-
-```bash
-# Web App
-cd app
-bun test
-
-# AI Model
-cd models
-pytest tests/
-
-# Bridge
-cd bridge
-go test ./...
-```
-
-### Linting & Formatting
-
-```bash
-# Web App
-cd app
-bun run lint
-
-# Python
-cd models
-flake8 .
-black .
-
-# Go
-cd bridge
-go fmt ./...
-go vet ./...
-```
-
 ---
 
 ## Deployment
@@ -320,7 +320,7 @@ Xem chi tiết tại:
 
 ---
 
-## Cấu hình môi trường (Environment Variables)
+## Cấu hình môi trường 
 
 ### Web Application (.env.local)
 
@@ -373,31 +373,6 @@ locations:
       lon: 106.660172
     density_threshold: 15
 ```
-
----
-
-## Đóng góp (Contributing)
-
-Chúng tôi hoan nghênh mọi đóng góp từ cộng đồng!
-
-### Quy trình đóng góp:
-
-1. **Fork** repository này
-2. Tạo **branch** mới (`git checkout -b feature/AmazingFeature`)
-3. **Commit** thay đổi (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** lên branch (`git push origin feature/AmazingFeature`)
-5. Tạo **Pull Request**
-
-### Coding Standards:
-
-- **TypeScript/JavaScript**: ESLint + Prettier
-- **Python**: PEP 8, Black formatter
-- **Go**: gofmt, golint
-- **Git Commit**: Conventional Commits format
-
-### Báo lỗi (Issues):
-
-Nếu phát hiện bug hoặc có ý tưởng feature mới, vui lòng tạo [GitHub Issue](https://github.com/PMMNM-Dep/PMMNM-Dep/issues).
 
 ---
 
@@ -531,45 +506,7 @@ Chưa, nhưng web app đã responsive và hoạt động tốt trên mobile.
 ---
 
 
-## 📸 Screenshots & Demo
 
-> **Lưu ý**: Thêm screenshots vào folder `/docs/images/` và link vào đây.
-
-### Main Dashboard
-
-![Dashboard](docs/images/dashboard.png)
-
-### Real-time Map
-
-![Map View](docs/images/map-view.png)
-
-### Admin Panel
-
-![Admin Panel](docs/images/admin-panel.png)
-
-### AI Traffic Detection
-
-![AI Detection](docs/images/ai-detection.png)
-
-### Video Demo
-
-🎥 [Watch Demo Video](https://youtube.com/demo) (Coming soon)
-
----
-
-## Cảm ơn (Acknowledgments)
-
-- **OLP 2025** - Cảm ơn ban tổ chức đã tạo cơ hội
-- **VietMap** - Cung cấp bản đồ số Việt Nam
-- **Roboflow** - Dataset training cho YOLO
-- **Ultralytics** - YOLO framework mạnh mẽ
-- **Open Source Community** - Tất cả maintainers của libraries sử dụng
-
----
-
-## Disclaimer (Tuyên bố miễn trừ trách nhiệm)
-
-Dự án này được phát triển cho mục đích học tập và dự thi. Không được đảm bảo cho sử dụng production mà không có testing và validation đầy đủ.
 
 **Sử dụng có trách nhiệm:**
 
@@ -580,19 +517,15 @@ Dự án này được phát triển cho mục đích học tập và dự thi. 
 
 ---
 
-## Project Status & CI/CD
+## Đóng Góp.
+Tới [Hướng Dẫn Đóng Góp](https://github.com/PKA-OpenLD/FORMS/blob/main/CONTRIBUTING.md).
 
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![Coverage](https://img.shields.io/badge/coverage-75%25-yellow)
-![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-success)
+## Giấy Phép.
+Source code trong repository được đảm báo dưới [Apache License Version 2.0] (https://github.com/PKA-OpenLD/FORMS/blob/main/LICENSE).
 
-### Continuous Integration:
+## Tuyên bố miễn trừ trách nhiệm
 
-- GitHub Actions for automated testing
-- Code quality checks (ESLint, Black, golint)
-- Security scanning (Snyk, Dependabot)
-
----
+Dự án này được phát triển cho mục đích học tập và dự thi. Không được đảm bảo cho sử dụng production mà không có testing và validation đầy đủ.
 
 <div align="center">
 
@@ -601,6 +534,5 @@ Dự án này được phát triển cho mục đích học tập và dự thi. 
 Made with ❤️ by [PKA-OpenLD](https://github.com/PMMNM-Dep) for OLP 2025
 
 ---
-
 
 </div>
