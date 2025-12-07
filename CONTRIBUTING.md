@@ -16,3 +16,7 @@ Chúng tôi hoan nghênh mọi đóng góp từ cộng đồng!
 - **Python**: PEP 8, Black formatter
 - **Go**: gofmt, golint
 - **Git Commit**: Conventional Commits format
+
+### Báo lỗi (Issues):
+
+Nếu phát hiện bug hoặc có ý tưởng feature mới, vui lòng tạo [GitHub Issue](https://github.com/PKA-OpenLD/FORMS/issues).
