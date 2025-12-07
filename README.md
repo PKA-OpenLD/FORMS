@@ -388,35 +388,6 @@ Dự án này được phân phối dưới **Apache License 2.0**. Xem file [LI
 
 ---
 
-## 🏆 Dự thi OLP 2025
-
-Dự án này được phát triển cho cuộc thi **Phần mềm Nguồn mở - Olympic Tin học Sinh viên 2025**.
-
-### Chủ đề:
-
-**Phát triển ứng dụng thành phố thông minh dựa trên nền tảng dữ liệu mở**
-
-### Tiêu chí đánh giá:
-
-#### 1. Tính đúng đắn, ý tưởng, tính sáng tạo (50 điểm)
-
-- ✅ Giải quyết vấn đề thực tế: Quản lý ngập lụt và tắc đường
-- ✅ Ý tưởng sáng tạo: Kết hợp AI, IoT, Real-time monitoring
-- ✅ Tính khả thi: Đã có proof-of-concept hoàn chỉnh
-
-#### 2. Sử dụng mã nguồn mở và dữ liệu mở (30 điểm)
-
-- ✅ **100% Open Source**: Apache 2.0 License
-- ✅ **Open Data**: Roboflow dataset (CC BY 4.0), NGSI-LD compatible
-- ✅ **Open Technologies**: Next.js, MongoDB, YOLO, Go, Python
-
-#### 3. Chất lượng, tính hoàn thiện (20 điểm)
-
-- ✅ Kiến trúc Microservices rõ ràng
-- ✅ Documentation đầy đủ (README + 3 tài liệu phân tích)
-- ✅ Code quality: TypeScript, ESLint, Type safety
-- ✅ Real-time features: WebSocket, MQTT
-- ✅ AI/ML integration: YOLO v8/11
 
 ### Điểm nổi bật:
 
