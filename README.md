@@ -6,7 +6,7 @@
 
 ![OLP 2025](https://img.shields.io/badge/Competition-OLP__2025-blue?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-Apache__2.0-green?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-1.0.0-green?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-1.1.0-green?style=for-the-badge)
 
 > **Sản phẩm dự thi Phần mềm Nguồn mở - OLP 2025**
 > **Chủ đề:** Phát triển ứng dụng thành phố thông minh dựa trên nền tảng dữ liệu mở.
