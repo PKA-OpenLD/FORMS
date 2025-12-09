@@ -420,10 +420,9 @@ Dự án này được phân phối dưới **Apache License 2.0**. Xem file [LI
 
 ### Documentation:
 
-- [Web App Architecture](./app/docs/PHAN_TICH_HE_THONG.md)
-- [MQTT Bridge Guide](./bridge/docs/PHAN_TICH_HE_THONG.md)
-- [AI Model Training](./models/docs/PHAN_TICH_HE_THONG.md)
-
+- [Web App Architecture](https://github.com/username/app-module/blob/main/docs/PHAN_TICH_HE_THONG.md)
+- [MQTT Bridge Guide](https://github.com/username/bridge-module/blob/main/docs/PHAN_TICH_HE_THONG.md)
+- [AI Model Training](https://github.com/username/models-module/blob/main/docs/PHAN_TICH_HE_THONG.md)
 ### External Resources:
 
 - [Next.js Documentation](https://nextjs.org/docs)
