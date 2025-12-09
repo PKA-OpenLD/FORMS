@@ -2,14 +2,20 @@
   <img src="docs/resources/FORMS_logo.png" alt="FORMS Logo" width="600"/>
 </p>
 
-# Flood and Outage Risk Management System
+<h1 align="center">
+  🌊🚦 Flood and Outage Risk Management System 🌧️📡
+</h1>
 
-![OLP 2025](https://img.shields.io/badge/Competition-OLP__2025-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/License-Apache__2.0-green?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-1.1.0-green?style=for-the-badge)
+<p align="center">
+  <img src="https://img.shields.io/badge/Competition-OLP__2025-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/License-Apache__2.0-green?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Version-1.1.0-green?style=for-the-badge" />
+</p>
 
-> **Sản phẩm dự thi Phần mềm Nguồn mở - OLP 2025**
-> **Chủ đề:** Phát triển ứng dụng thành phố thông minh dựa trên nền tảng dữ liệu mở.
+<p align="center">
+  <strong>Sản phẩm dự thi Phần mềm Nguồn mở - OLP 2025</strong><br>
+  <strong>Chủ đề:</strong> Phát triển ứng dụng thành phố thông minh dựa trên nền tảng dữ liệu mở.
+</p>
 
 ---
 
@@ -150,7 +156,7 @@ Do dự án sử dụng Git Submodules, bạn **BẮT BUỘC** phải clone vớ
 
 ```bash
 # Clone toàn bộ dự án
-git clone --recursive [https://github.com/PKA-OpenLD/FORMS.git](https://github.com/PKA-OpenLD/FORMS)
+git clone --recursive https://github.com/PKA-OpenLD/FORMS.git
 ```
 
 ⚠️ Lưu ý: Nếu bạn đã lỡ clone bằng lệnh thường (thư mục con bị rỗng), hãy chạy lệnh sau để sửa lỗi:
@@ -405,8 +411,8 @@ Dự án này được phân phối dưới **Apache License 2.0**. Xem file [LI
 ### Liên hệ:
 
 - 📧 Email: [contact@pka-openld.org](mailto:contact@pka-openld.org)
-- 🌐 GitHub: [github.com/PMMNM-Dep](https://github.com/PMMNM-Dep)
-- 📝 Issues: [GitHub Issues](https://github.com/PMMNM-Dep/PMMNM-Dep/issues)
+- 🌐 GitHub: [github.com/PMMNM-Dep](https://github.com/PKA-OpenLD)
+- 📝 Issues: [GitHub Issues](https://github.com/PKA-OpenLD/FORMS/issues)
 
 ---
 
